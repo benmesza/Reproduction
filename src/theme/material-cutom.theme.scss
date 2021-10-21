@@ -1,0 +1,88 @@
+@use '~@angular/material' as mat;
+@import '~@angular/material/theming';
+
+$ep-typography: mat.define-typography-config(
+  $font-family: 'Montserrat, sans-serif',
+  $body-1: mat.define-typography-level(1rem, 1.5rem, 400)
+);
+@include mat.all-component-typographies($ep-typography);
+@include mat.core($ep-typography);
+//@include mat.core();
+
+$ep-app-primary: mat.define-palette(mat.$cyan-palette);
+$ep-app-accent:  mat.define-palette(mat.$pink-palette);
+$ep-app-warn: mat.define-palette(mat.$red-palette);
+
+$ep-app-theme: mat.define-light-theme((
+  color: (
+    primary: $ep-app-primary,
+    accent: $ep-app-accent,
+    warn: $ep-app-warn,  
+  )
+));
+@include mat.all-component-themes($ep-app-theme);
+
+@mixin list-scrollbar() {
+  overflow-y: scroll;
+  scrollbar-color: #888 #f1f1f1;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    height: 7px;
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+
+mat-label {
+  font-weight: 600;
+}
+
+mat-form-field.mat-form-field {
+  font-size: 1.1rem;
+  font-weight: 400;
+  width: 100%
+}
+
+.mat-autocomplete-panel {
+  font-size: 1.1rem;
+}
+
+.mat-menu-panel.custom-menu-panel {
+  min-height: min-content;
+}
+
+textarea.cdk-textarea-autosize {
+  @include list-scrollbar();
+  line-height: 1.5;
+}
+
+button {
+  /*globális beállítások, nem kellene tudni felülírni*/
+  &:focus {
+    outline: none !important;
+  }
+  &:disabled {
+    cursor: not-allowed !important;
+  }
+}
+
+.custom-panel {
+  @include list-scrollbar();
+  mat-option {
+    .mat-option-text {
+      font-size: 1.1rem;
+    }
+  }
+}

@@ -1,0 +1,131 @@
+.background {
+  height: calc(100vh - (56px + 60px));
+}
+
+ion-segment {
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+}
+
+ion-segment-button {
+  font-size: 1rem;
+  text-transform: lowercase;
+}
+
+.toolbar-title {
+  background: none;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+:host ::ng-deep .segment-button-checked {
+  color: #E91E63;
+}
+
+.avatar-container {
+  width: 30%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+ion-item {
+  height: 60px;
+  border-bottom: 1px solid #e4e9ec;
+}
+
+.grid {
+  height: 60px;
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.phoneNumber {
+  font-size: 1.5rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+
+.date {
+  font-size: 1.1rem;
+  opacity: .5;
+}
+
+.new-status {
+  background-color: #ffffff;
+  color: #E91E63;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1rem;
+  position: absolute;
+  top: 1px;
+  right: 0;
+}
+
+.private-status {
+  color: rgba(0, 0, 0, .5);
+  text-align: center;
+  background-color: #ffffff;
+  font-weight: 500;
+  font-size: 1rem;
+  position: absolute;
+  top: 1px;
+  right: 0;
+}
+
+.administered-status {
+  color: #1aabab;
+  text-align: center;
+  background-color: #ffffff;
+  font-weight: 500;
+  font-size: 1rem;
+  position: absolute;
+  top: 1px;
+  right: 0;
+}
+
+.status-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  height: 60px;
+}
+
+.logout-icon {
+  position: absolute;
+  right: 15px;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  color: #1aabab;
+  margin-right: 10px;
+}
+
+.icon2 {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  color: #E91E63;
+  margin-right: 10px;
+}
+
+ion-label {
+  text-transform: none;
+}
+
+ion-list {
+  padding-bottom: 0px;
+}

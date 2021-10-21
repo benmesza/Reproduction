@@ -1,0 +1,7 @@
+{
+  "name": "ep-saas-mobil",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,82 @@
+<ion-header>
+  <mat-toolbar color="accent">
+    <span class="toolbar-title">Europroof Start</span>
+    <mat-icon class="logout-icon" (click)="logout()">exit_to_app</mat-icon>
+  </mat-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <ion-list *ngFor="let call of filteredListArray">
+    <ion-item *ngIf="call.status === 'none' || call.status === 'private'" lines="full" (click)="goToDetails(call)">
+      <ion-grid class="grid">
+        <ion-row style="padding-top: 10px;">
+          <ion-col size="12">
+            <div *ngIf="call.name !== ''" class="name">{{ call.name }}</div>
+            <div *ngIf="call.name === ''" class="name">Ismeretlen</div>
+            <ion-row style="display: flex; justify-content: space-between;">
+            <div class="phoneNumber">
+              <span *ngIf="call.type === 2 && selectedTab === 'none'">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon">phone_forwarded</mat-icon>
+              </span> 
+              <span *ngIf="call.type === 1 && selectedTab === 'none'">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon2">phone_callback</mat-icon>  
+              </span>
+              <span>{{ call.number }}</span>
+            </div>
+            <div class="date">{{ call.date | date: 'HH:mm'}} &ndash; {{ call.endDate | date: 'HH:mm' }} ({{ call.durationInMinute }})</div>
+            </ion-row>
+          </ion-col>
+          <ion-col class="status-container">
+            <div class="new-status" *ngIf="call.status === 'none'">
+              <div>Új</div>
+            </div>
+
+            <div class="private-status" *ngIf="call.status === 'private'">
+              <div>Magán</div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item *ngIf="call.status === 'administered'" lines="full">
+      <ion-grid class="grid">
+        <ion-row style="padding-top: 10px;">
+          <ion-col size="12">
+            <div *ngIf="call.name !== ''" class="name">{{ call.name }}</div>
+            <ion-row style="display: flex; justify-content: space-between;">
+              <div *ngIf="call.name === ''" class="name">Ismeretlen</div>
+              <div class="phoneNumber">{{ call.number }}</div>
+              <div class="date">{{ call.date | date: 'HH:mm' }} - {{ call.endDate | date: 'HH:mm' }} ({{ call.durationInMinute }})</div>
+            </ion-row>
+          </ion-col>
+          <ion-col class="status-container">
+            <div class="administered-status" *ngIf="call.status === 'administered'">
+              <div>Adminisztrált</div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+  <div *ngIf="notFound" style="width: 100%; text-align: center; padding-top: 10px;">
+    <p>Nincs megjeleníthető adat!</p>
+  </div>
+</ion-content>
+
+<ion-footer class="footer">
+  <ion-segment [(ngModel)]="selectedTab" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="1">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">phone_callback</mat-icon>
+        <ion-label>Bejövő hívások</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">phone_forwarded</mat-icon>
+        <ion-label>Kimenő hívások</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="none">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">import_contacts</mat-icon>
+        <ion-label>Nem adminisztrált</ion-label>
+      </ion-segment-button>
+  </ion-segment>
+</ion-footer>
