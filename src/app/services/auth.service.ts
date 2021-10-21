@@ -31,7 +31,7 @@ export class AuthService {
     const options = {
       connection: AUTH_CONNECTION.connection,
       audience: 'https://example.example.com'
-      // audience: 'https://plaveoodev.eponline.hu'
+
     };
 
     this.Client.authorize(options, (err, authResult) => {
